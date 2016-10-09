@@ -1,6 +1,7 @@
 /**
  * JavaCC template file created by SF JavaCC plugin 1.5.28+ wizard for JavaCC 1.5.0+
- */options {
+ */
+options {
   JDK_VERSION = "1.5";
   STATIC = false;
 }
@@ -20,7 +21,9 @@ public class Analisador {
 }
 PARSER_END(Analisador)
 
-//PARSER_END(Analisador) 
+TOKEN: {
+	< VAZIO: " " >{System.out.println("VAZIO -> "+image);}
+}
 
 SKIP :{	"\r" |
 		"\t" |
@@ -31,6 +34,20 @@ TOKEN : {
  
   < ponto_virg: ";" >
 }
+
+
+TOKEN:{
+	  <ABRE_COLCHETE: "[" >{System.out.println("ABRE_COLCHETE -> "+image);}
+	| <FECHA_COLCHETE: "]" >{System.out.println("FECHA_COLCHETE -> "+image);}
+	| <TERMINAIS: ";"|":"|"."|"," >{System.out.println("TERMINAIS -> "+image);}
+        | <ABRE_PARENTESE: "(" >{System.out.println("ABRE_PARENTESE -> "+image);}
+	| <FECHA_PARENTESE: ")" >{System.out.println("FECHA_PARENTESE -> "+image);}
+	| <ABRE_CHAVE: "{" >{System.out.println("ABRE_CHAVES -> "+image);}
+	| <FECHA_CHAVE: "}" >{System.out.println("FECHA_CHAVE -> "+image);}
+
+}
+
+
 
 TOKEN:{
   <PALAVRAS_RESERVADAS: "div" 		|
@@ -76,16 +93,4 @@ TOKEN:{
 	<PROGRAMA: "Program " > {System.out.println("PROGRAMA -> "+image);}
 }
 
-TOKEN:{
-      <ABRE_PARENTESE: "(" >{System.out.println("ABRE_PARENTESE -> "+image);}
-	| <FECHA_PARENTESE: ")" >{System.out.println("FECHA_PARENTESE -> "+image);}
-	| <ABRE_CHAVE: "{" >{System.out.println("ABRE_CHAVES -> "+image);}
-	| <FECHA_CHAVE: "}" >{System.out.println("FECHA_CHAVE -> "+image);}
-	| <ABRE_COLCHETE: "[" >{System.out.println("ABRE_COLCHETE -> "+image);}
-	| <FECHA_COLCHETE: "]" >{System.out.println("FECHA_COLCHETE -> "+image);}
-	| <TERMINAIS: ";"|":"|"."|"," >{System.out.println("TERMINAIS -> "+image);}
-}
 
-TOKEN: {
-	< VAZIO: " " >{System.out.println("VAZIO -> "+image);}
-}
